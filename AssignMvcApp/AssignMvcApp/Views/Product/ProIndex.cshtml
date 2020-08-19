@@ -1,0 +1,33 @@
+﻿@model IEnumerable<AssignMvcApp.Models.Products>
+@{
+    ViewBag.Title = "ProIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Products</h2>
+<div class="table-responsive">
+    @if (!Model.Any())
+    {
+<text>we dont have any customers any</text> }
+else
+{
+<table class=" table table-border table-hover ">
+    <thead>
+        <tr>
+            <th>ProductID</th>
+            <th>ProductName</th>
+            <th>ProductRate</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+<tr>
+    <td>@c.Product_Id</td>
+    <td>@Html.ActionLink(c.Product_Name, "Details", "Product", new { id = c.Product_Id }, null)</td>
+    <td>@c.Rate</td>
+</tr>
+        }
+</table>
+    }
+</div>
